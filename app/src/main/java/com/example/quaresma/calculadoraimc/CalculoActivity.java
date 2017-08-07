@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 public class CalculoActivity extends AppCompatActivity {
 
-    EditText edit;
     TextView label;
+    EditText edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +20,15 @@ public class CalculoActivity extends AppCompatActivity {
         label = (TextView) findViewById(R.id.textView3);
         edit = (EditText) findViewById(R.id.editText);
 
-        Bundle params = getIntent().getExtras();
+        Bundle dados = getIntent().getExtras();
 
-        Boolean isPeso = params.getBoolean("tipo");
-        String editValue = params.getString("dado");
+        Boolean isPeso = dados.getBoolean("tipo");
+        String editValue = dados.getString("calculo");
 
-        if(isPeso){
-            label.setText("Peso: ");
+        if (isPeso){
+            label.setText("Peso:");
         }else{
-            label.setText("Altura: ");
+            label.setText("Altura:");
         }
 
         edit.setText(editValue);
@@ -36,11 +36,10 @@ public class CalculoActivity extends AppCompatActivity {
     }
 
     public void clickOk(View v){
-
         Intent i = new Intent();
         Bundle param = new Bundle();
 
-        param.putDouble("resultado", Double.parseDouble(edit.getText().toString()));
+        param.putString("resultado", edit.getText().toString());
 
         i.putExtras(param);
 
@@ -49,12 +48,7 @@ public class CalculoActivity extends AppCompatActivity {
     }
 
     public void clickCancel(View v){
-
         setResult(RESULT_CANCELED);
         finish();
-
     }
-
-
-
 }

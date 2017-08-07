@@ -9,11 +9,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int PESO = 1;
-    public static int ALTURA = 2;
+    public static final int PESO = 1;
+    public static final int ALTURA = 2;
 
     TextView peso;
     TextView altura;
+    TextView textResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         peso = (TextView) findViewById(R.id.textView8);
         altura = (TextView) findViewById(R.id.textView7);
-
+        textResult = (TextView) findViewById(R.id.textView6);
     }
 
     public void clickPeso(View v){
@@ -30,13 +31,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,CalculoActivity.class);
         Bundle params = new Bundle();
 
-        TextView peso = (TextView) findViewById(R.id.textView8);
-
         params.putString("calculo", peso.getText().toString());
         params.putBoolean("tipo", true);
 
         intent.putExtras(params);
-
         startActivityForResult(intent, PESO);
     }
 
@@ -45,13 +43,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,CalculoActivity.class);
         Bundle params = new Bundle();
 
-        TextView altura = (TextView) findViewById(R.id.textView7);
-
         params.putString("calculo", altura.getText().toString());
         params.putBoolean("tipo", false);
 
         intent.putExtras(params);
-
         startActivityForResult(intent, ALTURA);
     }
 
@@ -71,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                 peso.setText(data.getStringExtra("resultado"));
 
+
             } else if (resultCode == RESULT_CANCELED){
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show();
             }
@@ -84,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
         Double result = num_peso / (num_altura * num_peso);
 
-        TextView textResult = (TextView) findViewById(R.id.textView6);
         textResult.setText(String.format("Seu IMC é: %.2f " , result));
     }
 
