@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        peso = (TextView) findViewById(R.id.textView8);
-        altura = (TextView) findViewById(R.id.textView7);
+        peso = (TextView) findViewById(R.id.textView7);
+        altura = (TextView) findViewById(R.id.textView8);
         textResult = (TextView) findViewById(R.id.textView6);
     }
 
@@ -55,17 +55,18 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == ALTURA) {
             if (resultCode == RESULT_OK) {
-
-                altura.setText(data.getStringExtra("resultado"));
+                Bundle params = data.getExtras();
+                String valor = params.getString("calculo");
+                altura.setText(valor);
 
             } else if (resultCode == RESULT_CANCELED){
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show();
             }
-        } else if (resultCode == PESO) {
+        } else if (requestCode == PESO) {
             if (resultCode == RESULT_OK) {
-
-                peso.setText(data.getStringExtra("resultado"));
-
+                Bundle params = data.getExtras();
+                String valor = params.getString("calculo");
+                peso.setText(valor);
 
             } else if (resultCode == RESULT_CANCELED){
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show();

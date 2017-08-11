@@ -20,18 +20,20 @@ public class CalculoActivity extends AppCompatActivity {
         label = (TextView) findViewById(R.id.textView3);
         edit = (EditText) findViewById(R.id.editText);
 
-        Bundle dados = getIntent().getExtras();
+        Bundle params = getIntent().getExtras();
 
-        Boolean isPeso = dados.getBoolean("tipo");
-        String editValue = dados.getString("calculo");
+        Boolean isPeso = params.getBoolean("tipo");
+        //String editValue = dados.getString("calculo");
 
         if (isPeso){
             label.setText("Peso:");
+            String valor = params.getString("calculo");
+            edit.setText(valor);
         }else{
             label.setText("Altura:");
+            String valor = params.getString("calculo");
+            edit.setText(valor);
         }
-
-        edit.setText(editValue);
 
     }
 
@@ -39,7 +41,7 @@ public class CalculoActivity extends AppCompatActivity {
         Intent i = new Intent();
         Bundle param = new Bundle();
 
-        param.putString("resultado", edit.getText().toString());
+        param.putString("calculo", edit.getText().toString());
 
         i.putExtras(param);
 
