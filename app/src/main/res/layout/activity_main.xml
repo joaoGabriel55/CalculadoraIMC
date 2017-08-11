@@ -62,19 +62,20 @@
         android:id="@+id/button7"
         android:layout_width="172dp"
         android:layout_height="53dp"
+        android:layout_above="@+id/button9"
+        android:layout_alignParentEnd="true"
         android:background="@drawable/botao"
+        android:elevation="22dp"
         android:onClick="clickAltura"
         android:text="Alterar altura"
         android:textColor="@android:color/white"
-        android:layout_above="@+id/button9"
-        android:layout_alignParentEnd="true"
-        tools:ignore="HardcodedText"
-        app:layout_constraintRight_toLeftOf="@+id/textView7"
-        tools:layout_constraintRight_creator="1"
         app:layout_constraintBaseline_toBaselineOf="@+id/button6"
+        app:layout_constraintLeft_toLeftOf="@+id/textView7"
+        app:layout_constraintRight_toLeftOf="@+id/textView7"
+        tools:ignore="HardcodedText"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/textView7" />
+        tools:layout_constraintRight_creator="1" />
 
     <Button
         android:id="@+id/button6"

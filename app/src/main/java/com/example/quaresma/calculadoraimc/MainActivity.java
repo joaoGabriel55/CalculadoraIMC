@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         Double num_peso = Double.parseDouble(peso.getText().toString());
         Double num_altura = Double.parseDouble(altura.getText().toString());
 
-        Double result = num_peso / (num_altura * num_peso);
+        Double result = num_peso / (num_altura * num_altura);
 
         textResult.setText(String.format("Seu IMC é: %.2f " , result));
     }
